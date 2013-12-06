@@ -20,11 +20,11 @@ h2{
 .streetimg{
   background-image: url(fogstreet.jpg);
   display: block;
-  height: 720px;
-  width: 1170px;
+  height: 100%;
+  width: 100%;
   background-repeat: no-repeat;
   position: fixed;
-  left: 3.5%;
+  background-position: center;
   z-index: -1;
 }
 .scroll-it{
