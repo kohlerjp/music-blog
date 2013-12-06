@@ -1,0 +1,62 @@
+@import "bootstrap";
+
+/* background styling */
+
+body{
+   background-color: #5E5E5E; 
+
+}
+h1{
+  
+  color: rgba(204, 204, 204, 0.8);
+  font-family: Georgia, 'Times New Roman', serif;
+  padding-bottom: 30px;
+}
+h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  padding: 10px 10px 0px 10px;
+}
+
+.streetimg{
+  background-image: url(fogstreet.jpg);
+  display: block;
+  height: 720px;
+  width: 1170px;
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 3.5%;
+  z-index: -1;
+}
+.scroll-it{
+  z-index: 1;
+}
+
+.song{
+  width: 95%;
+  position: relative;
+  left: 2.3%;
+}
+.post{
+  position: relative;
+  width: 900px;
+  background-color: white;
+  background:rgba(255,255,255,0.6);
+  border-radius: 15px; 
+  z-index: 3;
+  left: 10.3%;
+  margin-bottom: 40px;
+}
+.padd-10{
+  padding: 10px;
+}
+.image-center{
+  display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+input{
+border: 1px solid #bbb;
+  display: block;
+  margin-bottom: 15px;
+  height: 30px;
+}
