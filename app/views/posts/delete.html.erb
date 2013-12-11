@@ -1,0 +1,15 @@
+<div class="container">
+<% @posts.each do |post| %>
+<p> Post:
+  <%= post.song %> - <%= post.artist %> <%=link_to 'delete', post_path(post), method: :delete %>
+    <%= post.comments.each do |comment| %>
+      <p>
+      &nbsp &nbsp &nbsp &nbsp Comment: <%= comment.content %>  <%=link_to 'delete', comment, method: :delete %>
+    </p>
+    <% end %>
+</p>
+
+
+
+<% end %>
+</div>

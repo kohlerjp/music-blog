@@ -1,0 +1,20 @@
+<div class="modal fade" id="myModal<%=post.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<%= post.id %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel<%= post.id %>">New Comment</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(post.comments.build) do |f| %>
+          <%= f.text_area :content,placeholder:"Say something interesting about this song..." %>
+          <input type='hidden' name="comment[post_id]" value="<%= post.id %>">
+          <%= f.submit 'Post', class: 'btn btn-large btn-primary' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
