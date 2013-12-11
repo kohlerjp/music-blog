@@ -7,6 +7,7 @@ MusicBlog::Application.routes.draw do
   match '/delete', to: 'posts#delete', via: 'get'
   match '/new', to: 'posts#new', via: 'get'
   match 'bump/:id', to: 'posts#bump', via: 'post'
+  get '/google6fdab5e462abe640.html', to: 'static_pages#google_verification'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
