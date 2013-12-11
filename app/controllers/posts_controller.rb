@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    http_basic_authenticate_with name: "john", password: "testing", only: [:new]
+    http_basic_authenticate_with name: "john", password: "testing", only: [:new, :delete]
   def new
     @post = Post.new
   end
@@ -18,6 +18,22 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all()
   end
+
+  def delete
+    @posts = Post.all()
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to root_path
+  end
+
+  def bump
+    post = Post.find(params[:id])
+    post = post.update_attributes(bumps:post.bumps + 1)
+  end
+
 
 
   private 

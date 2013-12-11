@@ -1,26 +1,91 @@
+
+<%= javascript_include_tag "bootstrap" %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".showcm").click(function(){
+    showComments($(this).attr('commid'));
+  });
+  $(".new-commnt").click(function(){
+    $('#myModal'+$(this).attr('postid')).modal();
+  });
+  $(".bump").click(function(){
+    if (!($(this).hasClass('bumped'))){
+      bump($(this).attr('bumpid'));
+    }
+    $(this).removeClass('bump').addClass('bumped');
+    $(this).text('Bumped');
+  });
+});
+
+function showComments(id){
+  $('#comments'+id).fadeToggle();
+  console.log('#comments'+id);
+}
+function bump(id){
+
+  console.log('Bumped ' + id);
+  console.log($('#bump'+id).attr('bumpnum'));
+  $('#bump_num'+id).text(parseInt($('#bump'+id).attr('bumpnum'))+1 + ' bumps');
+  $.ajax({
+      type: "POST",
+      url: "/bump/"+id,
+    });
+
+}
+</script>
+
+
 <div class="container-fluid">
-  <div class="streetimg">
-  </div>
+  <div class="streetimg"> </div>
   <div class="container">
-    <h1 class="text-center">Blank Songs For Able Ears</h1> 
+    <h1 class="text-center">Scruffy Sounds</h1> 
 
 
     <% @posts.each do |post| %>
+
     <div class="post">
       <h2 class="" style="opacity:1;"><%= "#{post.song} - {#{post.artist}}" %>
         <small>Posted <%= time_ago_in_words(post.created_at) %> ago.</small>
       </h2>
-      <%= puts "****************** img loc is" %>
       <%= puts post.img_loc %>
       <%= image_tag(post.img_loc, class: 'image-center padd-10') %>
       <div class="song padd-10" >
          <iframe width="100%" height="166" scrolling="no" frameborder="no" src="<%= post.player_src %>&amp;color=316987&amp;auto_play=false&amp;show_artwork=true">
          </iframe> 
       </div>
+      <small id="showcomments<%=post.id%>" class="showcm" commid="<%=post.id %>"><%= pluralize(post.comments.count,'comment') %> </small> | 
+      <small id="bump_num<%=post.id %>"><%= pluralize(post.bumps,'bump') %></small>
+
+
+      <span class="align-right" align="right">
+
+        <span class="bump" id='bump<%= post.id %>' bumpid="<%= post.id %>" bumpnum="<%= post.bumps %>">
+        <span class="glyphicon glyphicon-arrow-up"> </span> <small>Bump</small>
+      </span> | 
+
+        <span class="new-commnt" postid="<%= post.id %>">
+        <span class="glyphicon glyphicon-plus"></span> <small>New Comment</small>
+      </span>
+
+
+      </span>
+
+      <div class="container comments" id="comments<%=post.id%>" >
+        <% post.comments.each do |comment| %>
+          <%= render partial:'posts/comments',locals:{comment:comment} %>
+
+        <% end %>
+        <div class="container "></div>
+      </div>  
     </div>
+    <%= render partial:'layouts/comment_modal',locals:{post:post} %>
+
+        
+
+
+
     <% end %>
-
-
+  </div>
 </div>
 
 

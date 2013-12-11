@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206020629) do
+ActiveRecord::Schema.define(version: 20131210023936) do
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
   create_table "posts", force: true do |t|
     t.string   "artist"
@@ -20,6 +29,9 @@ ActiveRecord::Schema.define(version: 20131206020629) do
     t.string   "player_src"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bumps",      default: 0
   end
+
+  add_index "posts", ["id"], name: "index_posts_on_id"
 
 end

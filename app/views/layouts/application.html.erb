@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Music Blog</title>
+  <title>Scruffy Sounds</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta property="og:{tagName}" content="http://i.imgur.com/H5EE6df.jpg"/>
+
+
   <%= csrf_meta_tags %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+      <%= javascript_include_tag "rails" %>
 </head>
 <body>
-  <% flash.each do |key,msg| %>
-  <div class="alert alert-<%= key %>">
-    <%= msg %>
-  <% end %>
-  </div>
+
 <%= yield %>
 
 </body>

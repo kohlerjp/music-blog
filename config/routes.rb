@@ -1,8 +1,12 @@
 MusicBlog::Application.routes.draw do
 
   resources :posts
+  resources :comments, only:[:create, :destroy]
 
   root 'posts#index'
+  match '/delete', to: 'posts#delete', via: 'get'
+  match '/new', to: 'posts#new', via: 'get'
+  match 'bump/:id', to: 'posts#bump', via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
