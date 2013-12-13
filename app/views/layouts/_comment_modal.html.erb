@@ -6,14 +6,16 @@
         <h4 class="modal-title" id="myModalLabel<%= post.id %>">New Comment</h4>
       </div>
       <div class="modal-body">
-        <%= form_for(post.comments.build) do |f| %>
+        <%= form_for(post.comments.build,remote:true) do |f| %>
           <%= f.text_area :content,placeholder:"Say something interesting about this song..." %>
           <input type='hidden' name="comment[post_id]" value="<%= post.id %>">
-          <%= f.submit 'Post', class: 'btn btn-large btn-primary' %>
+          <%= f.submit 'Post', class: 'btn btn-large btn-primary', "data-dismiss" =>"modal" %>
         <% end %>
       </div>
       <div class="modal-footer">
+        <span class="align-left">You may have to reload the page to see your comment.</span>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
