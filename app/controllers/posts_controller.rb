@@ -44,6 +44,14 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post = post.update_attributes(bumps:post.bumps - 1)
   end
+  def edit
+    @post = Post.find(params[:id])
+  end
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    redirect_to root_path
+  end
 
 
 
