@@ -40,6 +40,11 @@ class PostsController < ApplicationController
     post = post.update_attributes(bumps:post.bumps + 1)
   end
 
+  def unbump
+    post = Post.find(params[:id])
+    post = post.update_attributes(bumps:post.bumps - 1)
+  end
+
 
 
   private 

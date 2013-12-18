@@ -28,10 +28,21 @@ $(document).ready(function(){
   // bump a post
   $( document ).on( "click", ".bump", function() {
    if (!($(this).hasClass('bumped'))){
+        console.log('BUMPED');
       bump($(this).attr('bumpid'));
     }
     $(this).removeClass('bump').addClass('bumped');
     $(this).text('Bumped');
+  });
+
+  $( document ).on( "click", ".bumped", function() {
+
+   if (!($(this).hasClass('bump'))){
+        console.log('UN-BUMPED');
+      unbump($(this).attr('bumpid'));
+    }
+    $(this).removeClass('bumped').addClass('bump');
+    $(this).text('Bump');
   });
 });
 
@@ -42,7 +53,6 @@ function showComments(id){
 }
 // bumps post by given id
 function bump(id){
-  console.log('Bumped ' + id);
   console.log($('#bump'+id).attr('bumpnum'));
   $('#bump_num'+id).text(parseInt($('#bump'+id).attr('bumpnum'))+1 + ' bumps');
   $.ajax({
@@ -54,6 +64,13 @@ function bump(id){
 function hideModal(id){
   var modalID = "#myModal"+id;
   $(modalID).modal('hide');
+}
+function unbump(id){
+  $('#bump_num'+id).text(parseInt($('#bump'+id).attr('bumpnum')) + ' bumps');
+  $.ajax({
+      type: "POST",
+      url: "/unbump/"+id,
+    });
 }
 
 
