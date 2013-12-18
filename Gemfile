@@ -26,6 +26,10 @@ gem 'bootstrap-sass', git: 'https://github.com/thomas-mcdonald/bootstrap-sass.gi
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+#pagination
+gem 'bootstrap-will_paginate', '0.0.9'
+
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

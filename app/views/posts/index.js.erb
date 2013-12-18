@@ -1,0 +1,3 @@
+<% if @posts.total_pages >= @posts.current_page %>
+$('#posts').append("<%= escape_javascript(render(:partial => 'post',collection:@posts)) %>");
+<% end %>

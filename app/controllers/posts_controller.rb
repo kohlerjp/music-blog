@@ -16,7 +16,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all()
+    @posts = Post.paginate(page:params[:page],per_page:3)
+    puts params
+
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html
+    end
   end
 
   def delete
