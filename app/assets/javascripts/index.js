@@ -17,10 +17,13 @@ $(document).ready(function(){
   $( document ).on( "click", ".showcm", function() {
   showComments($(this).attr('commid'));
 });
-  //hide modal on post
+  //hide modal on post and display comment
   $( document ).on( "click", ".btn-modal", function() {
-  hideModal($(this).attr('postid'));
-});
+    var id = $(this).attr('postid');
+    var content = $("#content"+id).val();;
+    $("#comments"+$(this).attr('postid')).prepend('<div class="comment"><span class="com-text">'+ content + '</span><small> Posted just now. </small></div>');
+   hideModal($(this).attr('postid'));
+  });
  // show modal
   $( document ).on( "click", ".new-commnt", function() {
    $('#myModal'+$(this).attr('postid')).modal();

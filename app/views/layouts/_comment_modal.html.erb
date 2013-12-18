@@ -7,13 +7,13 @@
       </div>
       <div class="modal-body">
         <%= form_for(post.comments.build,remote:true) do |f| %>
-          <%= f.text_area :content,placeholder:"Say something interesting about this song..." %>
+          <%= f.text_area :content,id:"content#{post.id}",placeholder:"Say something interesting about this song..." %>
           <input type='hidden' name="comment[post_id]" value="<%= post.id %>">
           <%= f.submit 'Post', class: 'btn btn-large btn-primary btn-modal', postid:post.id %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <span class="align-left">You may have to reload the page to see your comment.</span>
+        <span class="align-left"></span>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
       </div>
