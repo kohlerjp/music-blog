@@ -11,30 +11,30 @@ $(document).ready(function(){
       url: "/posts?page="+current_page,
       });
    }
-    }, 150));
+    }, 200));
 });
-
-  // hide modal on post
-  $(".btn-modal").click(function(){
-    hideModal($(this).attr('postid'));
-  });
-  // show comments
-  $(".showcm").click(function(){
-    showComments($(this).attr('commid'));
-  });
-  // show modal
-  $(".new-commnt").click(function(){
-    $('#myModal'+$(this).attr('postid')).modal();
+      //show comments
+  $( document ).on( "click", ".showcm", function() {
+  showComments($(this).attr('commid'));
+});
+  //hide modal on post
+  $( document ).on( "click", ".btn-modal", function() {
+  hideModal($(this).attr('postid'));
+});
+ // show modal
+  $( document ).on( "click", ".new-commnt", function() {
+   $('#myModal'+$(this).attr('postid')).modal();
   });
   // bump a post
-  $(".bump").click(function(){
-    if (!($(this).hasClass('bumped'))){
+  $( document ).on( "click", ".bump", function() {
+   if (!($(this).hasClass('bumped'))){
       bump($(this).attr('bumpid'));
     }
     $(this).removeClass('bump').addClass('bumped');
     $(this).text('Bumped');
   });
 });
+
 // shows comments for given post id
 function showComments(id){
   $('#comments'+id).fadeToggle();

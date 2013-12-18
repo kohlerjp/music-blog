@@ -1,5 +1,4 @@
 
-
     <div class="post">
       <h2 class="" style="opacity:1;"><%= "#{post.song} - {#{post.artist}}" %>
         <small>Posted <%= time_ago_in_words(post.created_at) %> ago.</small>
@@ -34,6 +33,7 @@
         <% end %>
         <div class="container "></div>
       </div>  
-          <%= render partial:'layouts/comment_modal',locals:{post:post} %>
+          
     </div>
+    <%= render partial:'layouts/comment_modal',locals:{post:post} %>
     
