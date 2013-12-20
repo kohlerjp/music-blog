@@ -23,6 +23,17 @@ $(document).ready(function(){
     var content = $("#content"+id).val();;
     $("#comments"+$(this).attr('postid')).prepend('<div class="comment"><span class="com-text">'+ content + '</span><small> Posted just now. </small></div>');
    hideModal($(this).attr('postid'));
+   // increment counter
+   var current_num = parseInt($('#showcomments'+id).attr('numcom'));
+   if (current_num == 0){
+    $('#showcomments'+id).text('1 comment');
+   }
+   else{
+    var new_num = current_num + 1;
+    console.log(new_num);
+    $('#showcomments'+id).text(new_num+' comments');
+   }
+
   });
  // show modal
   $( document ).on( "click", ".new-commnt", function() {
