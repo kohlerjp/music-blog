@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    http_basic_authenticate_with name: APP_CONFIG['username'], password: APP_CONFIG['password'], only: [:new, :delete]
+    http_basic_authenticate_with name: "john", password: "testing", only: [:new, :delete]
   def new
     @post = Post.new
   end
